@@ -1,0 +1,392 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Welcome to InsureMe!</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="{% static 'main/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'main/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="{% static 'main/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
+
+  <style>
+    header#header {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.nav-menu a {
+  color: #fff;
+  transition: 0.3s;
+}
+
+.nav-menu a:hover, .nav-menu .active>a, .nav-menu li:hover>a {
+  color: #f82249;
+}
+
+.hero-img {
+  max-width: 100%;
+  align-self: center;
+}
+
+.btn-get-started {
+  background: #f82249;
+  border: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.btn-get-started:hover {
+  background: #e20e30;
+}
+
+.client-logo img {
+  opacity: 0.6;
+  transition: all 0.3s ease-in-out;
+}
+
+.client-logo img:hover {
+  opacity: 1;
+}
+
+.card {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.features img {
+  width: 100%;
+  padding: 20px;
+}
+
+footer {
+  background: #111;
+  color: #fff;
+  padding: 40px 0;
+  font-size: 14px;
+}
+
+footer a {
+  color: #fff;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  background: #f82249;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: background 0.5s;
+  border-radius: 50px;
+}
+
+.back-to-top:hover {
+  background: #e20e30;
+}
+
+  </style>
+</head>
+
+
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light"><a href="{% url 'index' %}">InsureMe<span>.</span></a></h1>
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul id="navigation">
+            <li class="drop-down"><a href="{% url 'index' %}" class="active">Home</a>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#insurance">Insurance Products</a></li>
+                </ul>
+            </li>
+            <li class="drop-down"><a href="#">Insurance Comparison</a>
+                <ul>
+                    <li><a href="{% url 'accident_insurance' %}">Accident Insurance</a></li>
+                    <li><a href="{% url 'maid_insurance' %}">Maid Insurance</a></li>
+                    <li><a href="{% url 'travel_insurance' %}">Travel Insurance</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'recommend-policy' %}">Policy Recommendations</a></li>
+            <li><a href="{% url 'cart' %}">Your Cart <i class="fa fa-shopping-cart" style="font-size:17px"></i></a></li>
+            <li><a href="login.html">Shubham Upadhyay</a></li> <!-- Assuming this is the profile/login -->
+            <li><a href="logout.html" class="nav-link link-scroll">Logout</a></li> <!-- Changed to logout.html if that's the logout page -->
+        </ul>
+    </nav>
+    
+    </div>
+  </header><!-- End Header -->
+</section><!-- End Hero -->
+
+  <section id="hero">
+
+    <div class="container">
+      <div class="row d-flex align-items-center">
+      <div class=" col-lg-6 py-5 py-lg-0 order-2 order-lg-1" data-aos="fade-right">
+        <h1 style="font-size: 46px; color: white;">Search for it. Use it. Grab it!</h1>
+        <h2 style="font-size: 20px;">We are here to support you for your insurance needs.</h2>
+        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
+        <img src="{% static 'main/img/hero-img.png' %}" class="img-fluid" alt="">
+      </div>
+    </div>
+    </div>
+
+  
+  <main id="main">
+    
+    <section id="clients" class="clients section-bg">
+      <div class="container">
+
+        <div class="row no-gutters clients-wrap clearfix wow fadeInUp">
+
+          <div class="col-lg-2 col-md-4 col-6">
+            <div class="client-logo">
+              <img src="{% static 'main/img/clients/client-1.png' %}" class="img-fluid" alt="" data-aos="flip-right">
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6">
+            <div class="client-logo">
+              <img src="{% static 'main/img/clients/client-2.png' %}" class="img-fluid" alt="" data-aos="flip-right" data-aos-delay="100">
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6">
+            <div class="client-logo">
+              <img src="{% static 'main/img/clients/client-3.png' %}" class="img-fluid" alt="" data-aos="flip-right" data-aos-delay="200" style="text-align: center; display: block;">
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6">
+            <div class="client-logo">
+              <img src="{% static 'main/img/clients/client-4.png' %}" class="img-fluid" alt="" data-aos="flip-right" data-aos-delay="300">
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6">
+            <div class="client-logo">
+              <img src="{% static 'main/img/clients/client-5.png' %}" class="img-fluid" alt="" data-aos="flip-right" data-aos-delay="400">
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6">
+            <div class="client-logo">
+              <img src="{% static 'main/img/clients/client-6.png' %}" class="img-fluid" alt="" data-aos="flip-right" data-aos-delay="500">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Clients Section -->
+
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about section-bg">
+      <div class="container">
+
+        <div class="row">
+          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
+          <div class="col-xl-7 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch">
+            <div class="content d-flex flex-column justify-content-center">
+              <h3 data-aos="fade-in" data-aos-delay="100">A one stop portal to find your ideal insurance provider</h3>
+              <p data-aos="fade-in">
+                Having trouble finding the right insurance provider for you? Do banks offer you limited options? Want to find the best and cheapest option for you? InsureMe is here to save your day!
+              </p>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= insurance_products Section ======= -->
+    <section id="insurance" class="insurance section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h3 data-aos="fade-in">Insurance Products</h3>
+          <p data-aos="fade-in">Here is a list of our Insurance Products you can choose from</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 d-flex align-items-center" data-aos="fade-right">
+            <div class="card" style = "width:fit-content;">
+              <div class="card-img">
+                <a href="{% url 'products_travel' %}">
+                <img src="{% static 'main/img/Travel-Insurance.jpg' %}" width = "538" height = "300" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Travel Insurance</h5>
+                <p class="card-text">Travelling is something to enjoy, even more enjoyable with a travel insurance!</p></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-left">
+            <div class="card" style = "width:fit-content;">
+              <div class="card-img">
+                <a href="{% url 'products_maid' %}">
+                <img src="{% static 'main/img/fdw-maid-insurance.jpg' %}" width = "500" height = "300" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Maid Insurance</h5>
+                <p class="card-text">Be worry-free about your helpers!</p></a>
+              </div>
+            </div>
+
+          </div>
+          <div class="mx-auto" d-flex align-items-center data-aos="fade-right">
+            <div class="card" style = "width:fit-content; text-align: center; display: flex; align-items: center; margin-left: 400px; margin-top: 20px;">
+              <div class="card-img">
+                <a href="{% url 'products_accident' %}">
+                <img src="{% static 'main/img/Accident_insurance.jpg' %}" width = "500" height = "300"alt="...">
+              </div>
+              <div class="card-body"> 
+                <h5 class="card-title">Accident Insurance</h5>
+                <p class="card-text">Never worry about journeys ever again, you're in safe hands.</p></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End insurance_products Section -->
+
+    <!-- ======= Features Section ======= -->
+    <section id="features" class="features section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h3 data-aos="fade-in">Features</h3>
+          <p data-aos="fade-in">These are the exquisite features provided by InsureMe to you so that you can afford all assets and have no liabilities.</p>
+        </div>
+
+        <div class="row content">
+          <div class="col-md-5" data-aos="fade-right">
+            <img src="{% static 'main/img/features-1.svg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-7 pt-4" data-aos="fade-left">
+            <h3>#1. We provide a consolidated list of insurance products from various companies. </h3>
+            <p class="font-italic">
+              That means you dont have to keep searching many websites for what's the best for you.
+            </p>
+            <ul>
+              <li><i class="icofont-check"></i> Efficient to find different products</li>
+              <li><i class="icofont-check"></i> All-in-one solution to help you understand the A to Z of insurance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row content">
+          <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
+            <img src="{% static 'main/img/features-2.svg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-right">
+            <h3>#2.Purchase your preferred insurance on-site.</h3>
+            <p class="font-italic">
+              Once you have decided on the insurance you want to purchase, you can conveniently check out and pay for your insurance on this website!
+            </p>
+            
+              <ul>
+                <li><i class="icofont-check"></i> Pay for your product conveniently and the insurance is yours!</li>
+              </ul> 
+            
+          </div>
+        </div>
+
+ 
+
+      </div>
+    </section><!-- End Features Section -->
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row  justify-content-center">
+          <div class="col-lg-6">
+            <h3>InsureMe</h3>
+            
+          </div>
+        </div>
+
+        <div class="row footer-newsletter justify-content-center">
+         Thank you for visiting our website! We hope you found our insurance products useful.
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>InsureMe</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'main/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'main/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'main/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'main/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'main/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'main/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'main/vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'main/vendor/aos/aos.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'main/js/main.js' %}"></script>
+
+</body>
+
+</html>

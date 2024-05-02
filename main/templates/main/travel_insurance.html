@@ -1,0 +1,180 @@
+{% load dict_filters %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Insurance Comparison</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <!-- Favicons -->
+  <link href="{% static 'main/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'main/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'main/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Arial', sans-serif; }
+        .container { margin-top: 20px; }
+        .table-responsive { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container d-flex align-items-center">
+    
+          <div class="logo mr-auto">
+            <h1 class="text-light"><a href="{% url 'index' %}">InsureMe<span>.</span></a></h1>
+          </div>
+    
+          <nav class="nav-menu d-none d-lg-block">
+            <ul id="navigation">
+                <li class="drop-down"><a href="{% url 'index' %}" class="active">Home</a>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#insurance">Insurance Products</a></li>
+                    </ul>
+                </li>
+                <li class="drop-down"><a href="#">Insurance Comparison</a>
+                    <ul>
+                        <li><a href="{% url 'accident_insurance' %}">Accident Insurance</a></li>
+                        <li><a href="{% url 'maid_insurance' %}">Maid Insurance</a></li>
+                        <li><a href="{% url 'travel_insurance' %}">Travel Insurance</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'recommend-policy' %}">Policy Recommendations</a></li>
+                <li><a href="{% url 'cart' %}">Your Cart <i class="fa fa-shopping-cart" style="font-size:17px"></i></a></li>
+                <li><a href="login.html">Shubham Upadhyay</a></li> <!-- Assuming this is the profile/login -->
+                <li><a href="logout.html" class="nav-link link-scroll">Logout</a></li> <!-- Changed to logout.html if that's the logout page -->
+            </ul>
+        </nav>
+        
+        </div>
+      </header><!-- End Header -->
+    <div class="container">
+        <h1 class="text-center my-4">Travel Insurance Comparison</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="country">Select Country:</label>
+                        <select class="form-control" id="country" name="country" onchange="updatePolicies(this);">
+                            {% for country, policies in all_policies.items %}
+                            <option value="{{ country }}">{{ country }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="policy1">Select First Policy:</label>
+                        <select class="form-control" id="policy1" name="policy1">
+                            <!-- Options will be loaded via JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="policy2">Select Second Policy:</label>
+                        <select class="form-control" id="policy2" name="policy2">
+                            <!-- Options will be loaded via JavaScript -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Compare</button>
+        </form>
+        {% if selected_policies %}
+        <div class="table-responsive">
+            <h2>Comparison Results:</h2>
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Insurance Company</th>
+                        <th>Policy Name</th>
+                        <th>Cost</th>
+                        <th>Review</th>
+                        <th>Overseas Medical Expenses</th>
+                        <th>Delayed Trip</th>
+                        <th>Delayed Baggage</th>
+                        <th>Loss or Damage to Belongings</th>
+                        <th>Cancelled Trip</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for policy in selected_policies %}
+                    <tr>
+                        <td>{{ policy|get_item:'Insurance Company' }}</td>
+                        <td>{{ policy|get_item:'Policy Name' }}</td>
+                        <td>{{ policy|get_item:'Cost' }}</td>
+                        <td>{{ policy|get_item:'Review' }}</td>
+                        <td>{{ policy.Properties|get_item:'Overseas Medical Expenses' }}</td>
+                        <td>{{ policy.Properties|get_item:'Delayed Trip' }}</td>
+                        <td>{{ policy.Properties|get_item:'Delayed Baggage' }}</td>
+                        <td>{{ policy.Properties|get_item:'Loss or Damage to Belongings' }}</td>
+                        <td>{{ policy.Properties|get_item:'Cancelled Trip' }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Log the initial state of allPolicies to check its structure    
+        var allPolicies = {{ all_policies | safe }};
+    
+        function updatePolicies(selectElement) {
+            var country = selectElement.value;
+            console.log("Selected Country:", country);
+            
+            var policies = allPolicies[country];
+            console.log("Policies for Selected Country:", policies);
+    
+            var policy1Select = document.getElementById('policy1');
+            var policy2Select = document.getElementById('policy2');
+            
+            // Clear existing options
+            policy1Select.innerHTML = '';
+            policy2Select.innerHTML = '';
+    
+            // Populate dropdowns with new options
+            Object.keys(policies).forEach(function(key) {
+                var policy = policies[key];
+                console.log("Adding policy:", policy['Policy Name']);
+                var option1 = new Option(policy['Policy Name'], key);
+                var option2 = new Option(policy['Policy Name'], key);
+                policy1Select.add(option1);
+                policy2Select.add(option2);
+            });
+        }
+    
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            var initialCountrySelect = document.getElementById('country');
+            if (initialCountrySelect && initialCountrySelect.options.length > 0) {
+                updatePolicies(initialCountrySelect);
+            }
+        });
+    </script>
+    
+    
+</body>
+</html>

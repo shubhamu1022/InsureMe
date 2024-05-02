@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Your Cart</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicons -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="{% static 'main/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'main/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="{% static 'main/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light"><a href="{% url 'index' %}">InsureMe<span>.</span></a></h1>
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul id="navigation">
+            <li class="drop-down"><a href="{% url 'index' %}" class="active">Home</a>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#insurance">Insurance Products</a></li>
+                </ul>
+            </li>
+            <li class="drop-down"><a href="#">Insurance Comparison</a>
+                <ul>
+                    <li><a href="{% url 'accident_insurance' %}">Accident Insurance</a></li>
+                    <li><a href="{% url 'maid_insurance' %}">Maid Insurance</a></li>
+                    <li><a href="{% url 'travel_insurance' %}">Travel Insurance</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'recommend-policy' %}">Policy Recommendations</a></li>
+            <li><a href="cart.html">Your Cart <i class="fa fa-shopping-cart" style="font-size:17px"></i></a></li>
+            <li><a href="login.html">Shubham Upadhyay</a></li> <!-- Assuming this is the profile/login -->
+            <li><a href="logout.html" class="nav-link link-scroll">Logout</a></li> <!-- Changed to logout.html if that's the logout page -->
+        </ul>
+    </nav>
+    
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Your Cart</h2>
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li>Your Cart</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs Section -->
+
+    <section class="inner-page">
+      <div class="container">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Insurance Policy/Loan Name</th>
+              <th scope="col">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="name"></td>
+              <td id="price"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="container">
+          <div class="row">
+              <div class="col-md-12 bg-light text-right" >
+                  <a href="checkout.html" class="btn btn-primary btn-lg mb30">Continue to Payment Page</a>
+              </div>
+          </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row  justify-content-center">
+          <div class="col-lg-6">
+            <h3>InsureMe</h3>
+          </div>
+        </div>
+
+        <div class="row footer-newsletter justify-content-center">
+          Thank you for visiting our website! We hope you found our insurance products useful.
+
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>InsureMe</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/ -->
+        <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'main/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'main/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'main/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'main/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'main/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'main/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'main/vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'main/vendor/aos/aos.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'main/js/main.js' %}"></script>
+
+  <script>
+    $(document).ready(function () {
+      console.log(sessionStorage.getItem('item'))
+      console.log(sessionStorage.getItem('price'))
+      var nameNode = document.getElementById('name')
+      nameNode.appendChild(document.createTextNode(sessionStorage.getItem("item")))
+      var priceNode = document.getElementById('price')
+      priceNode.appendChild(document.createTextNode("$" + parseFloat(sessionStorage.getItem("price")).toFixed(2)))
+    })
+  </script>
+
+</body>
+
+</html>

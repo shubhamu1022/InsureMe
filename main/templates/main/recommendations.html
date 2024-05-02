@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Policies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="{% static 'main/img/favicon.png' %}" rel="icon">
+    <link href="{% static 'main/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+    <link href="{% static 'main/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/vendor/venobox/venobox.css' %}" rel="stylesheet">
+    <link href="{% static 'main/vendor/aos/aos.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
+    
+    <style>
+        .policy {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .policy-details {
+            margin-bottom: 10px;
+        }
+        .policy h2 {
+            color: #0056b3;
+        }
+        .age-group-premium {
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Recommended Policies for {{ category }}</h1>
+        {% for policy in policies %}
+        <div class="policy">
+            <h2>{{ policy.name }}</h2>
+            {% if category == 'Whole Life' %}
+            <p class="policy-details"><strong>Monthly Premium:</strong> ${{ policy.monthly_premium }}</p>
+            <p class="policy-details"><strong>Sum Insured:</strong> ${{ policy.sum_insured }}</p>
+            <p class="policy-details"><strong>Coverage:</strong> {{ policy.coverage|join:", " }}</p>
+            {% elif category == 'Critical Illness' %}
+            <p class="policy-details"><strong>Age Group Premium:</strong>
+                {% for age_group, premium in policy.age_group_premium.items %}
+                <div class="age-group-premium">{{ age_group }}: ${{ premium }}</div>
+                {% endfor %}
+            </p>
+            <p class="policy-details"><strong>Number of Conditions Covered:</strong> {{ policy.num_condition_covered }}</p>
+            <p class="policy-details"><strong>Sum Insured:</strong> ${{ policy.sum_insured }}</p>
+            {% elif category == 'Savings' %}
+            <p class="policy-details"><strong>Rate of Return per Annum:</strong> {{ policy.rate_of_return_per_annum }}%</p>
+            <p class="policy-details"><strong>Monthly Premium:</strong> ${{ policy.monthly_premium }}</p>
+            <p class="policy-details"><strong>Initial Deposit:</strong> ${{ policy.initial_deposit }}</p>
+            {% endif %}
+        </div>
+        {% empty %}
+        <p>No policies found matching the criteria.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

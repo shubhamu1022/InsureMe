@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Recommender</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="{% static 'main/img/favicon.png' %}" rel="icon">
+    <link href="{% static 'main/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+    <link href="{% static 'main/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/vendor/venobox/venobox.css' %}" rel="stylesheet">
+    <link href="{% static 'main/vendor/aos/aos.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
+  
+    <style>
+      header#header {
+    background: rgba(0, 0, 0, 0.9);
+  }
+  
+  .nav-menu a {
+    color: #fff;
+    transition: 0.3s;
+  }
+  
+  .nav-menu a:hover, .nav-menu .active>a, .nav-menu li:hover>a {
+    color: #f82249;
+  }
+  </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container d-flex align-items-center">
+    
+          <div class="logo mr-auto">
+            <h1 class="text-light"><a href="{% url 'index' %}">InsureMe<span>.</span></a></h1>
+          </div>
+    
+          <nav class="nav-menu d-none d-lg-block">
+            <ul id="navigation">
+                <li class="drop-down"><a href="{% url 'index' %}" class="active">Home</a>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#insurance">Insurance Products</a></li>
+                    </ul>
+                </li>
+                <li class="drop-down"><a href="#">Insurance Comparison</a>
+                    <ul>
+                        <li><a href="{% url 'accident_insurance' %}">Accident Insurance</a></li>
+                        <li><a href="{% url 'maid_insurance' %}">Maid Insurance</a></li>
+                        <li><a href="{% url 'travel_insurance' %}">Travel Insurance</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'recommend-policy' %}">Policy Recommendations</a></li>
+                <li><a href="{% url 'cart' %}">Your Cart <i class="fa fa-shopping-cart" style="font-size:17px"></i></a></li>
+                <li><a href="login.html">Shubham Upadhyay</a></li> <!-- Assuming this is the profile/login -->
+                <li><a href="logout.html" class="nav-link link-scroll">Logout</a></li> <!-- Changed to logout.html if that's the logout page -->
+            </ul>
+        </nav>
+        
+        </div>
+      </header><!-- End Header -->
+            <div class="container mt-5">
+        <h2>Find the Best Insurance Policy for You</h2>
+        <form id="insuranceForm" class="mt-4" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="YOUR_CSRF_TOKEN">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_category" class="form-label">Select Category of Insurance:</label>
+                <select name="category" class="form-control" id="id_category">
+                    <option value="Whole Life">Whole Life</option>
+                    <option value="Critical Illness">Critical Illness</option>
+                    <option value="Savings">Savings</option>
+                </select>
+            </div>
+            <div class="mb-3" id="age-group-div" style="display: none;">
+                <label for="id_age" class="form-label">Your Age:</label>
+                <input type="number" name="age" class="form-control" id="id_age" placeholder="Enter your age">
+            </div>
+            <div class="mb-3">
+                <label for="id_max_premium" class="form-label">Maximum Monthly Premium:</label>
+                <input type="number" name="max_premium" class="form-control" step="any" id="id_max_premium">
+            </div>
+            <button type="submit" class="btn btn-primary">Recommend Policies</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const categorySelect = document.getElementById('id_category');
+            const ageDiv = document.getElementById('age-group-div');
+
+            function toggleAgeInput() {
+                if (categorySelect.value === 'Critical Illness') {
+                    ageDiv.style.display = 'block'; // Show the age input
+                } else {
+                    ageDiv.style.display = 'none'; // Hide the age input
+                }
+            }
+
+            // Initialize the form elements based on the initial category selection
+            toggleAgeInput();
+
+            // Event listener for changes in category selection
+            categorySelect.addEventListener('change', toggleAgeInput);
+        });
+    </script>
+</body>
+</html>

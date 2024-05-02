@@ -1,0 +1,412 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>View Products</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Favicons -->
+  <link href="{% static 'main/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'main/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="{% static 'main/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
+
+
+
+  <!-- =======================================================
+  * Template Name: Bocor - v2.1.0
+  * Template URL: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light"><a href="{% url 'index' %}">InsureMe<span>.</span></a></h1>
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul id="navigation">
+            <li class="drop-down"><a href="{% url 'index' %}" class="active">Home</a>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#insurance">Insurance Products</a></li>
+                </ul>
+            </li>
+            <li class="drop-down"><a href="#">Insurance Comparison</a>
+                <ul>
+                    <li><a href="{% url 'accident_insurance' %}">Accident Insurance</a></li>
+                    <li><a href="{% url 'maid_insurance' %}">Maid Insurance</a></li>
+                    <li><a href="{% url 'travel_insurance' %}">Travel Insurance</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'recommend-policy' %}">Policy Recommendations</a></li>
+            <li><a href="{% url 'cart' %}">Your Cart <i class="fa fa-shopping-cart" style="font-size:17px"></i></a></li>
+            <li><a href="login.html">Shubham Upadhyay</a></li> <!-- Assuming this is the profile/login -->
+            <li><a href="logout.html" class="nav-link link-scroll">Logout</a></li> <!-- Changed to logout.html if that's the logout page -->
+        </ul>
+    </nav>
+    
+    </div>
+  </header><!-- End Header -->
+  <main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Travel Insurance</h2>
+          <ol>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li>Travel Insurance Product Listing</li>
+          </ol>
+          <!-- <input type="text" placeholder="Search for a product.."> -->
+          
+        </div>
+      </div>
+    </section><!-- End Breadcrumbs Section -->
+<!-- add a for loop for the table portion -->
+    <section class="inner-page" style="padding-top: 20px;">
+      <div class="container">
+
+        <!-- dropdown and search button -->
+        <div class="dropdown text-center mb-4">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Country
+          </button>
+          <div id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="z-index: 10;">
+            
+          </div>
+        </div>
+
+        <div id="warning">
+          <br/>
+          <h3>Please select a destination country.</h3>
+        </div>
+
+        <div id="br">
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        </div>
+
+        <table class="table table-hover" id="table" style="visibility: hidden;">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Country</th>
+              <th scope="col">Company</th>
+              <th scope="col">Policy Name</th>
+              <th scope="col">Cost</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" style="position: relative;">
+
+    <div class="footer-top">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row  justify-content-center">
+          <div class="col-lg-6">
+            <h3>InsureMe</h3>
+          </div>
+        </div>
+
+        <div class="row footer-newsletter justify-content-center">
+            Thank you for visiting our website! We hope you found our insurance products useful.
+           </div>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>InsureMe</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <style>
+    tr.hide-table-padding td {
+      padding: 0;
+    }
+
+    .accordion-toggle .expand-button:after {
+      content: '-';
+    }
+
+    .accordion-toggle.collapsed .expand-button:after {
+      content: '+';
+    }
+  </style>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'main/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'main/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'main/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'main/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'main/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'main/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'main/vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'main/vendor/aos/aos.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <!-- Template Main JS File -->
+  <script src="{% static 'main/js/main.js' %}"></script>
+  <script>
+    $(document).ready(function () {
+      $.getJSON("{% static 'main/data_travelInsurance.json' %}", function (data) {
+        // get dropdown values
+        var dropdownNode = document.getElementById("dropdown");
+        var countries = [];
+        Object.keys(data).forEach(function (key){
+          countries.push(key)
+        })
+        for(var country of countries) {
+          var aNode = document.createElement("a")
+          aNode.className = "dropdown-item"
+          aNode.setAttribute("id", country)
+          aNode.setAttribute("href", "#")
+          aNode.setAttribute("onclick", "getCountrySelected(this.id)")
+          aNode.setAttribute("style", "style='z-index: 10;'")
+          aNode.appendChild(document.createTextNode(country))
+          dropdownNode.appendChild(aNode)
+        }
+      })
+    })
+    
+    function getCountrySelected(country) {
+      //remove warning
+      var warningNode = document.getElementById("warning")
+      warningNode.innerHTML = ""
+
+      //update dropdown placeholder
+      var dropdownNode = document.getElementById("dropdownMenuButton");
+      dropdownNode.innerHTML = country
+
+      // show table and remove br
+      var brNode = document.getElementById("br")
+      brNode.innerHTML = ""
+      var tableNode = document.getElementById("table")
+      tableNode.setAttribute("style", "visibility:visible;")
+
+      // var array = [{name: "john", age: 12}, {name: "john", age: 12}, {name: "john", age: 12}];
+      // console.log(typeof array)
+      // for (i of array) {
+      //   console.log(i)
+      // }
+      //populateTable
+      var tbodyNode = document.getElementById('tbody');
+      tbodyNode.innerHTML = "";
+      var counter = 0;
+
+      // get country json records
+      var arrItems = [];
+      $.getJSON("assets/data_travelInsurance.json", function (data) {
+        var records = data[country];
+        // console.log(records);
+        Object.keys(records).forEach(function(key) {
+          records[key]["Country"] = country;
+          addProduct(records[key],key);
+        })
+      })
+    }
+
+    // function to add products 
+    
+    function addProduct(item,counter){
+      var tbodyNode = document.getElementById('tbody');
+      console.log(counter);
+      var trNode = document.createElement('tr');
+      trNode.className = "accordion-toggle collapsed";
+      trNode.setAttribute('id', `accordion${counter}`);
+      trNode.setAttribute('data-toggle', "collapse");
+      trNode.setAttribute('data-parent', `#accordion${counter}`);
+      trNode.setAttribute('href', `#collapse${counter}`)
+      //expand button
+      var expandBtnNode = document.createElement('td');
+      expandBtnNode.className = "expand-button";
+      trNode.appendChild(expandBtnNode);
+      // country
+      var countryNode = document.createElement('td')
+      countryNode.appendChild(document.createTextNode(item["Country"]))
+      trNode.appendChild(countryNode);
+      //company
+      var companyNode = document.createElement('td')
+      companyNode.appendChild(document.createTextNode(item["Insurance Company"]));
+      trNode.appendChild(companyNode);
+      //name
+      var nameNode = document.createElement('td')
+      nameNode.appendChild(document.createTextNode(item['Policy Name']))
+      trNode.appendChild(nameNode);
+      // cost
+      var costNode = document.createElement('td')
+      costNode.appendChild(document.createTextNode(item["Cost"]))
+      trNode.appendChild(costNode);
+      //add to cart
+      var addToCartBtn = document.createElement('button')
+      addToCartBtn.setAttribute("type", "button");
+      addToCartBtn.className = "btn btn-primary mt-2"
+      addToCartBtn.appendChild(document.createTextNode("Purchase"))
+      trNode.appendChild(addToCartBtn);
+      tbodyNode.appendChild(trNode);
+
+      // add collapsible segment
+      var collapsibleTr = document.createElement('tr')
+      collapsibleTr.className = 'hide-table-padding'
+      var tdNode = document.createElement('td')
+      tdNode.setAttribute("colspan", "6")
+      var collapseDiv = document.createElement('div')
+      collapseDiv.setAttribute("id", `collapse${counter}`)
+      collapseDiv.className = "collapse in p-3"
+      //overseas medical expenses
+      var omeNode = document.createElement("div");
+      omeNode.className = "row"
+        // empty div
+      var emptyDiv = document.createElement("div")
+      emptyDiv.className = "col-3"
+      omeNode.appendChild(emptyDiv)
+        // key: OME
+      var omeDiv = document.createElement("div")
+      omeDiv.className = "col-4"
+      omeDiv.appendChild(document.createTextNode("Overseas Medical Expenses"))
+      omeNode.appendChild(omeDiv)
+        // value: $price
+      var priceDiv = document.createElement("div")
+      priceDiv.className = "col"
+      priceDiv.appendChild(document.createTextNode(item['Properties']["Overseas Medical Expenses"]))
+      omeNode.appendChild(priceDiv)
+
+      collapseDiv.appendChild(omeNode);
+
+      // delayed trip
+      var dtNode = document.createElement("div");
+      dtNode.className = "row"
+        // empty div
+      var emptyDiv = document.createElement("div")
+      emptyDiv.className = "col-3"
+      dtNode.appendChild(emptyDiv)
+        // key: OME
+      var omeDiv = document.createElement("div")
+      omeDiv.className = "col-4"
+      omeDiv.appendChild(document.createTextNode("Delayed Trip"))
+      dtNode.appendChild(omeDiv)
+        // value: $price
+      var priceDiv = document.createElement("div")
+      priceDiv.className = "col"
+      priceDiv.appendChild(document.createTextNode(item['Properties']["Delayed Trip"]))
+      dtNode.appendChild(priceDiv)
+
+      collapseDiv.appendChild(dtNode);
+
+      // delayed baggage
+      var dbNode = document.createElement("div");
+      dbNode.className = "row"
+        // empty div
+      var emptyDiv = document.createElement("div")
+      emptyDiv.className = "col-3"
+      dbNode.appendChild(emptyDiv)
+        // key: OME
+      var omeDiv = document.createElement("div")
+      omeDiv.className = "col-4"
+      omeDiv.appendChild(document.createTextNode("Delayed Baggage"))
+      dbNode.appendChild(omeDiv)
+        // value: $price
+      var priceDiv = document.createElement("div")
+      priceDiv.className = "col"
+      priceDiv.appendChild(document.createTextNode(item['Properties']["Delayed Baggage"]))
+      dbNode.appendChild(priceDiv)
+
+      collapseDiv.appendChild(dbNode);
+
+      // loss or damage
+      var lodNode = document.createElement("div");
+      lodNode.className = "row"
+        // empty div
+      var emptyDiv = document.createElement("div")
+      emptyDiv.className = "col-3"
+      lodNode.appendChild(emptyDiv)
+        // key: OME
+      var omeDiv = document.createElement("div")
+      omeDiv.className = "col-4"
+      omeDiv.appendChild(document.createTextNode("Loss or Damage to Belongings"))
+      lodNode.appendChild(omeDiv)
+        // value: $price
+      var priceDiv = document.createElement("div")
+      priceDiv.className = "col"
+      priceDiv.appendChild(document.createTextNode(item['Properties']["Loss or Damage to Belongings"]))
+      lodNode.appendChild(priceDiv)
+
+      collapseDiv.appendChild(lodNode);
+
+      // cancelled trip
+      var ctNode = document.createElement("div");
+      ctNode.className = "row"
+        // empty div
+      var emptyDiv = document.createElement("div")
+      emptyDiv.className = "col-3"
+      ctNode.appendChild(emptyDiv)
+        // key: OME
+      var omeDiv = document.createElement("div")
+      omeDiv.className = "col-4"
+      omeDiv.appendChild(document.createTextNode("Cancelled Trip"))
+      ctNode.appendChild(omeDiv)
+        // value: $price
+      var priceDiv = document.createElement("div")
+      priceDiv.className = "col"
+      priceDiv.appendChild(document.createTextNode(item['Properties']["Cancelled Trip"]))
+      ctNode.appendChild(priceDiv);
+
+      collapseDiv.appendChild(ctNode);
+      tdNode.appendChild(collapseDiv);
+      collapsibleTr.appendChild(tdNode);
+      tbodyNode.appendChild(collapsibleTr);
+    }
+  </script>
+</body>
+
+</html>
